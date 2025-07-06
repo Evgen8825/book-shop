@@ -10,6 +10,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {ShopCartService} from "./services/shop-cart.service";
 import {BooksService} from "./services/books.service";
 import {HeaderModule} from "./components/header/header.module";
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,12 @@ import {HeaderModule} from "./components/header/header.module";
     HttpClientModule,
     HeaderModule,
   ],
-  providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}, ShopCartService, BooksService],
+  providers: [
+    {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    ShopCartService,
+    BooksService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

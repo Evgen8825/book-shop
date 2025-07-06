@@ -1,12 +1,11 @@
 {
   "name": "book-shop",
   "version": "0.0.0",
-  "homepage": "https://Evgen8825.github.io/book-shop",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "deploy": "gh-pages -d build",
+    "build": "ng build --base-href /book-shop/ --output-path docs",
+    "deploy": "ng build && npx angular-cli-ghpages --dir=dist/book-shop",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
