@@ -1,0 +1,50 @@
+<div class="wrapper">
+  <tui-breadcrumbs [class]="screenWidth > 480 ? 'tui-space_bottom-4' : 'tui-space_bottom-1'">
+    <a
+      *tuiItem
+      tuiLink
+      (click)="reset()"
+    >
+      Главная
+    </a>
+    <a *tuiItem>Поиск</a>
+  </tui-breadcrumbs>
+
+  <div [class]="screenWidth > 480 ? 'tui-text_h6 tui-space_bottom-4' : 'tui-text_h6 tui-space_bottom-1'">Поиск</div>
+  <div *ngIf="filteredBooks$ | async as filteredBooks" class="books-wrapper">
+    <ng-container *ngFor="let book of filteredBooks">
+      <div class="book-item">
+        <div (click)="showBook(book)">
+          <img [src]="book.img" class="book-image">
+          <div class="book-info">
+            <tui-money [value]="book.price" currency="RUB" decimal="not-zero"></tui-money>
+            <div>{{book.title}}</div>
+            <div class="book-author">{{book.author}}</div>
+          </div>
+        </div>
+        <div class="book-buttons">
+          <tui-rating
+            [readOnly]="true"
+            [style.color]="'var(--tui-accent)'"
+            [iconNormal]="screenWidth > 480 ? 'tuiIconStarLarge' : 'tuiIconStar'"
+            [iconFilled]="screenWidth > 480 ? 'tuiIconStarLarge' : 'tuiIconStar'"
+            [ngModel]="book.rating"
+          ></tui-rating>
+          <button
+            [shape]="null"
+            [size]="screenWidth > 480 ? 'l' : 's'"
+            tuiButton
+            type="button"
+            appearance="primary"
+            class="buy-button"
+            (click)="selectBook(book)"
+          >
+            Купить
+          </button>
+        </div>
+
+      </div>
+    </ng-container>
+  </div>
+</div>
+

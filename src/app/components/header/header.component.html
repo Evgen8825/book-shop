@@ -1,0 +1,42 @@
+<div class="header">
+  <div class="header-search">
+    <div class="shop-name">
+      <img src="favicon.ico" class="shop-logo">
+      <div>Book Shop</div>
+    </div>
+
+    <tui-input
+      [formControl]="search"
+      [tuiTextfieldCleaner]="true"
+      tuiTextfieldIconLeft="tuiIconSearch"
+      class="search-panel"
+    >
+      Поиск книг, авторов
+    </tui-input>
+  </div>
+
+  <div class="header-buttons">
+    <div class="shop-cart">
+      <tui-svg src="tuiIconUserCheckLarge"></tui-svg>
+      <span>Вход</span>
+    </div>
+    <div class="shop-cart">
+      <tui-svg src="tuiIconUserPlusLarge"></tui-svg>
+      <span>Регистрация</span>
+    </div>
+    <div (click)="showShopCart()" class="shop-cart">
+      <div class="shop-cart-icon">
+        <tui-svg src="tuiIconShoppingCartLarge"></tui-svg>
+        <button
+          size="xs"
+          appearance="secondary"
+          tuiButton
+        >
+          {{selectedBooksAmount$ | async}}
+        </button>
+      </div>
+      <span>Корзина</span>
+    </div>
+  </div>
+
+</div>

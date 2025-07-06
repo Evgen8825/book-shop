@@ -1,0 +1,52 @@
+<div *ngIf="book$ | async as book" class="book-container">
+  <tui-breadcrumbs [class]="screenWidth > 480 ? 'tui-space_bottom-4' : 'tui-space_bottom-1'">
+    <a
+      *tuiItem
+      tuiLink
+      (click)="reset()"
+    >
+      Главная
+    </a>
+    <a
+      *tuiItem
+      tuiLink
+      (click)="showCategory(book.category)"
+    >
+      {{ book.category }}
+    </a>
+    <a *tuiItem>{{book.title}}</a>
+  </tui-breadcrumbs>
+  <div class="tui-text_h5 tui-space_bottom-5">{{book.title}}. {{book.author}}</div>
+  <div class="book-item">
+    <img [src]="book.img" class="book-image">
+    <div class="book-info">
+      <div class="tui-space_bottom-5">
+        <div class="tui-text_h6 tui-space_bottom-5">О товаре</div>
+        <div class="tui-text_body-m tui-space_bottom-5">{{book.description}}</div>
+        <tui-rating
+          [readOnly]="true"
+          [style.color]="'var(--tui-accent)'"
+          [iconNormal]="'tuiIconStarLarge'"
+          [iconFilled]="'tuiIconStarLarge'"
+          [ngModel]="book.rating"
+        ></tui-rating>
+        <div class="tui-space_bottom-5">
+          <tui-money [value]="book.price" currency="RUB" decimal="not-zero" class="tui-text_h5"></tui-money>
+        </div>
+      </div>
+      <button
+        [shape]="null"
+        [size]="'l'"
+        (click)="selectBook(book)"
+        tuiButton
+        type="button"
+        appearance="primary"
+        class="buy-button"
+      >
+        Купить
+      </button>
+
+    </div>
+  </div>
+
+</div>

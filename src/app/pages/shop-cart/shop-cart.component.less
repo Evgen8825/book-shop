@@ -1,0 +1,52 @@
+.books-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+}
+
+.book-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 2%;
+  border-bottom: 1px solid var(--tui-text-03);
+}
+
+.book-image {
+  width: 10%;
+}
+
+.book-info {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.cart-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.badge {
+  padding: 2%;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid var(--tui-text-03);
+  border-radius: 15px;
+  padding: 4%;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

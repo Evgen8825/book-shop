@@ -1,0 +1,42 @@
+.wrapper {
+  padding: 2%;
+}
+
+.books-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.book-item {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 3fr 1fr 1fr;
+  gap: 1rem;
+  justify-content: flex-start;
+  font: var(--tui-font-text-m);
+  cursor: pointer;
+}
+
+.book-image {
+  width: 80%;
+}
+
+.book-author {
+  color: var(--tui-base-06);
+}
+
+.buy-button {
+  width: 90%;
+}
+
+@media screen and (max-width: 480px) {
+  .books-wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .book-item {
+    grid-template-rows: 2fr 1fr 1fr;
+    font: var(--tui-font-text-xs-2);
+  }
+
+}

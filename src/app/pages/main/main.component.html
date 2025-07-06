@@ -1,0 +1,72 @@
+<div class="books-container">
+  <ng-container *ngIf="books$ | async as books">
+    <div *ngFor="let booksByCategory of books">
+      <div class="books-category tui-space_bottom-1">{{booksByCategory.category}}</div>
+      <div class="category-view tui-space_bottom-4" (click)="showCategory(booksByCategory.category)">
+        <div>Смотреть все</div>
+        <tui-svg src="tuiIconArrowRight"></tui-svg>
+      </div>
+      <div
+        tuiCarouselButtons
+        class="carousel-wrapper"
+      >
+        <button
+          *ngIf="screenWidth > 480"
+          icon="tuiIconChevronLeftLarge"
+          title="Previous"
+          tuiIconButton
+          type="button"
+          (click)="carousel.prev()"
+        ></button>
+        <tui-carousel
+          #carousel
+          class="carousel"
+          [itemsCount]="screenWidth > 480 ? 4 : 3"
+        >
+          <ng-container *ngFor="let book of booksByCategory.books">
+            <div *tuiItem class="book-item">
+              <div (click)="showBook(book)">
+                <img [src]="book.img" class="book-image">
+                <div class="book-info">
+                  <tui-money [value]="book.price" currency="RUB" decimal="not-zero"></tui-money>
+                  <div>{{book.title}}</div>
+                  <div class="book-author">{{book.author}}</div>
+                </div>
+              </div>
+
+              <div class="book-buttons">
+                <tui-rating
+                  [readOnly]="true"
+                  [style.color]="'var(--tui-accent)'"
+                  [iconNormal]="screenWidth > 480 ? 'tuiIconStarLarge' : 'tuiIconStar'"
+                  [iconFilled]="screenWidth > 480 ? 'tuiIconStarLarge' : 'tuiIconStar'"
+                  [ngModel]="book.rating"
+                ></tui-rating>
+                <button
+                  [shape]="null"
+                  [size]="screenWidth > 480 ? 'l' : 's'"
+                  (click)="selectBook(book)"
+                  tuiButton
+                  type="button"
+                  appearance="primary"
+                  class="buy-button"
+                >
+                  Купить
+                </button>
+              </div>
+
+            </div>
+          </ng-container>
+        </tui-carousel>
+        <button
+          *ngIf="screenWidth > 480"
+          icon="tuiIconChevronRightLarge"
+          title="Next"
+          tuiIconButton
+          type="button"
+          (click)="carousel.next()"
+        ></button>
+      </div>
+    </div>
+  </ng-container>
+</div>

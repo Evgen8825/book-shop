@@ -1,0 +1,39 @@
+.book-container {
+  height: 100%;
+  //display: grid;
+  //grid-template-rows: 3fr 1fr 1fr;
+  //gap: 1rem;
+  //justify-content: flex-start;
+  //font: var(--tui-font-text-m);
+  padding: 2%;
+}
+
+.book-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.book-title {
+  font: var(--tui-font-heading-6);
+}
+
+.book-image {
+  width: 80%;
+}
+
+.book-info {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+}
+
+.buy-button {
+  width: 90%;
+}
+
+@media screen and (max-width: 480px) {
+  .book-item {
+    grid-template-rows: 2fr 1fr 1fr;
+    font: var(--tui-font-text-xs-2);
+  }
+
+}
